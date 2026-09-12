@@ -61,25 +61,26 @@ export function Hero() {
                     <ArrowDownRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" aria-hidden="true" />
                   </a>
                 </div>
-                <div className="flex flex-wrap items-center gap-3">
-                  <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <LockKeyhole className="size-3.5" aria-hidden="true" />
-                    Local-first. MIT licensed. Yours to control.
-                  </p>
-                  <span className="hidden text-muted-foreground/40 sm:inline" aria-hidden="true">•</span>
+                <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <LockKeyhole className="size-3.5" aria-hidden="true" />
+                  Local-first. MIT licensed. Yours to control.
+                </p>
+                <div className="pt-2">
                   <a
                     href={glamaUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center transition-opacity hover:opacity-80"
-                    aria-label="Glama MCP server score 100/100"
+                    className="inline-block transition-transform duration-200 hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    aria-label="View Contradiction MCP server inspection on Glama"
                   >
                     <Image
-                      src="/logos/glama-score.svg"
-                      alt="Glama MCP score badge"
-                      width={110}
-                      height={20}
-                      className="h-5 w-auto"
+                      src="/logos/glama-card.svg"
+                      alt="Contradiction MCP on Glama"
+                      width={380}
+                      height={200}
+                      priority
+                      unoptimized
+                      className="h-auto w-[330px] rounded-xl border border-border/80 shadow-md sm:w-[380px]"
                     />
                   </a>
                 </div>
