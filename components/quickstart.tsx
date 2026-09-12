@@ -2,103 +2,61 @@
 
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Check, Copy, Sparkles, Terminal } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { documentationUrl, repositoryUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
-const claudeConfig = JSON.stringify({
-  mcpServers: {
-    contradiction: {
-      command: 'node',
-      args: ['/absolute/path/to/Contradiction-MCP/contradiction-mcp/dist/index.js'],
-    },
-  },
-}, null, 2)
-
-const antigravityConfig = JSON.stringify({
-  mcpServers: {
-    contradiction: {
-      command: 'node',
-      args: ['/absolute/path/to/Contradiction-MCP/contradiction-mcp/dist/index.js'],
-      env: {
-        NODE_ENV: 'production',
-        DATABASE_PATH: '/absolute/path/to/Contradiction-MCP/contradiction-mcp/data/contradiction.db',
-        MCP_TRANSPORT: 'stdio',
-        LOG_LEVEL: 'error',
-      },
-    },
-  },
-}, null, 2)
-
-const cursorConfig = JSON.stringify({
-  mcpServers: {
-    contradiction: {
-      command: 'node',
-      args: ['/absolute/path/to/Contradiction-MCP/contradiction-mcp/dist/index.js'],
-    },
-  },
-}, null, 2)
-
 const setups = [
   {
-    id: 'one-command',
-    label: 'One-Command (CLI)',
+    id: 'npx',
+    label: 'One-Command (NPX)',
     filename: 'terminal',
     language: 'bash',
     code: `# Configure in ALL detected IDEs automatically:\nnpx -y contradiction-mcp install all\n\n# Or configure a specific editor:\nnpx -y contradiction-mcp install antigravity\nnpx -y contradiction-mcp install cursor\nnpx -y contradiction-mcp install claude\nnpx -y contradiction-mcp install claude-code\nnpx -y contradiction-mcp install windsurf`,
-    note: 'Auto-detects client configuration paths across macOS, Linux, and Windows. Wires up stdio transport in seconds.',
+    note: 'Works instantly on macOS, Windows, and Linux. No cloning or compilation needed.',
     tag: 'Recommended',
+  },
+  {
+    id: 'antigravity',
+    label: 'Google Antigravity',
+    filename: 'terminal',
+    language: 'bash',
+    code: `# One command setup for Google Antigravity:\nnpx -y contradiction-mcp install antigravity\n\n# Wires up global (~/.gemini/config/mcp_config.json)\n# and workspace (.agents/mcp_config.json) automatically`,
+    note: 'Restart Antigravity after running to load all 21 contradiction intelligence tools.',
+  },
+  {
+    id: 'cursor',
+    label: 'Cursor IDE',
+    filename: 'terminal',
+    language: 'bash',
+    code: `# One command setup for Cursor IDE:\nnpx -y contradiction-mcp install cursor\n\n# Wires up ~/.cursor/mcp.json and workspace automatically`,
+    note: 'Restart Cursor IDE to immediately access contradiction tools in agent mode.',
+  },
+  {
+    id: 'claude',
+    label: 'Claude Desktop',
+    filename: 'terminal',
+    language: 'bash',
+    code: `# One command setup for Claude Desktop:\nnpx -y contradiction-mcp install claude\n\n# Automatically updates claude_desktop_config.json on macOS / Windows`,
+    note: 'Restart Claude Desktop after running to activate the MCP server.',
   },
   {
     id: 'source',
     label: 'From Source',
     filename: 'terminal',
     language: 'bash',
-    code: `# 1. Clone the repository\ngit clone ${repositoryUrl}.git\ncd "Contradiction-MCP/contradiction-mcp"\n\n# 2. Install dependencies & build TypeScript\nnpm install\nnpm run build\n\n# 3. Automatically configure all your local IDEs\nnpm run install-mcp\n\n# Or start directly over stdio\nnode dist/index.js`,
-    note: 'Requires Node.js 20+ and npm 9+. Builds TypeScript dist files and initializes local SQLite database in data/contradiction.db.',
-  },
-  {
-    id: 'antigravity',
-    label: 'Antigravity',
-    filename: '~/.gemini/config/mcp_config.json',
-    language: 'json',
-    code: antigravityConfig,
-    note: 'Merge into ~/.gemini/config/mcp_config.json (global) or <workspace>/.agents/mcp_config.json. Restart AGY to load all 21 tools automatically.',
-  },
-  {
-    id: 'cursor',
-    label: 'Cursor',
-    filename: '.cursor/mcp.json',
-    language: 'json',
-    code: cursorConfig,
-    note: 'Add to .cursor/mcp.json in your workspace root. Replace the absolute path to your built dist/index.js file.',
-  },
-  {
-    id: 'claude',
-    label: 'Claude Desktop',
-    filename: 'claude_desktop_config.json',
-    language: 'json',
-    code: claudeConfig,
-    note: 'Add to ~/Library/Application Support/Claude/claude_desktop_config.json (macOS) or %APPDATA%\\Claude\\claude_desktop_config.json (Windows).',
+    code: `# 1. Clone repository\ngit clone ${repositoryUrl}.git\ncd "Contradiction-MCP/contradiction-mcp"\n\n# 2. Install & build\nnpm install\nnpm run build\n\n# 3. Auto-configure\nnpm run install-mcp`,
+    note: 'Requires Node.js 20+. Builds local TypeScript and SQLite WAL storage.',
   },
   {
     id: 'docker',
     label: 'Docker',
     filename: 'terminal',
     language: 'bash',
-    code: `git clone ${repositoryUrl}.git\ncd "Contradiction-MCP/contradiction-mcp"\n\n# Build container image and start daemon\ndocker build -t contradiction-mcp:latest .\ndocker compose up -d\n\n# Check health endpoint\ncurl http://localhost:3000/health`,
+    code: `git clone ${repositoryUrl}.git\ncd "Contradiction-MCP/contradiction-mcp"\n\n# Build container image and start daemon\ndocker build -t contradiction-mcp:latest .\ndocker compose up -d\n\n# Health check\ncurl http://localhost:3000/health`,
     note: 'Runs self-contained container with persistent volume for SQLite and streamable HTTP on port 3000.',
-  },
-  {
-    id: 'verify',
-    label: 'Verify & Test',
-    filename: 'terminal',
-    language: 'bash',
-    code: `cd "Contradiction-MCP/contradiction-mcp"\n\n# Run all 169 unit & integration tests\nnpm test\n\n# Run live end-to-end smoke test with real SQLite\nnpm run smoke\n\n# Run interactive demo scenario\nnpm run demo`,
-    note: 'Verifies zero mocks: tests real SQLite WAL storage, SemVer algebra, and multi-source claim comparisons.',
   },
 ]
 
@@ -154,8 +112,8 @@ export function Quickstart() {
               Up and running.<br />In seconds.
             </h2>
             <p className="max-w-sm text-pretty text-base leading-relaxed text-muted-foreground">
-              Connect Contradiction to your AI tools with a single command, or build from source with full control.
-              Runs locally over stdio or deploys remotely with streamable HTTP.
+              Install with a single command into Claude, Cursor, Antigravity, or Windsurf.
+              Published globally on npm. Zero configuration required.
             </p>
             <div className="flex flex-col gap-2.5">
               <div className="rounded-lg border px-4 py-3">
@@ -169,7 +127,7 @@ export function Quickstart() {
               </div>
               <p className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
                 <Sparkles className="size-3.5 text-accent-foreground" aria-hidden="true" />
-                Zero mocks · Real SQLite WAL · Local-first
+                Live on NPM · 1-Command Install · Local-First
               </p>
             </div>
             <a
@@ -182,7 +140,7 @@ export function Quickstart() {
             </a>
           </div>
           <div className="min-w-0">
-            <Tabs defaultValue="one-command" className="gap-5">
+            <Tabs defaultValue="npx" className="gap-5">
               <div className="overflow-x-auto pb-1">
                 <TabsList variant="line" aria-label="Installation method" className="h-10 gap-3">
                   {setups.map((setup) => (
