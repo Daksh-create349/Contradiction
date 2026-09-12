@@ -3,6 +3,7 @@ import { ArrowDownRight, ArrowRight, ArrowUpRight, EqualNot, FileCode2, FileText
 import { Badge } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { glamaUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const clients = [
@@ -19,9 +20,22 @@ export function Hero() {
         <div className="py-12 md:py-14 lg:py-10">
           <div className="grid items-center gap-12 lg:grid-cols-[1.04fr_1fr] lg:gap-7">
             <div className="hero-reveal flex flex-col items-start gap-7">
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1 text-xs font-medium text-amber-800 dark:text-amber-300">
-                <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true" />
-                <span>Currently in active development</span>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <div className="inline-flex items-center gap-2.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1 text-xs font-medium text-amber-800 dark:text-amber-300">
+                  <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true" />
+                  <span>Currently in active development</span>
+                </div>
+                <a
+                  href={glamaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-800 transition-colors hover:bg-emerald-500/20 dark:text-emerald-300"
+                  aria-label="Glama 100/100 Score"
+                >
+                  <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+                  <span>Glama Score: <strong>100/100</strong></span>
+                  <ArrowUpRight className="size-3 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                </a>
               </div>
               <a href="#developers" className="group inline-flex items-center gap-2.5 text-sm text-muted-foreground">
                 <span className="size-1.5 rounded-full bg-accent-foreground" aria-hidden="true" />
@@ -47,10 +61,28 @@ export function Hero() {
                     <ArrowDownRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" aria-hidden="true" />
                   </a>
                 </div>
-                <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <LockKeyhole className="size-3.5" aria-hidden="true" />
-                  Local-first. MIT licensed. Yours to control.
-                </p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <LockKeyhole className="size-3.5" aria-hidden="true" />
+                    Local-first. MIT licensed. Yours to control.
+                  </p>
+                  <span className="hidden text-muted-foreground/40 sm:inline" aria-hidden="true">•</span>
+                  <a
+                    href={glamaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center transition-opacity hover:opacity-80"
+                    aria-label="Glama MCP server score 100/100"
+                  >
+                    <Image
+                      src="/logos/glama-score.svg"
+                      alt="Glama MCP score badge"
+                      width={110}
+                      height={20}
+                      className="h-5 w-auto"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
             <figure className="hero-visual hero-reveal hero-reveal-art" aria-label="An illustrative runtime contradiction between documentation and a Dockerfile">

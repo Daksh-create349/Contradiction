@@ -1,3 +1,4 @@
+export const glamaUrl = 'https://glama.ai/mcp/servers/Daksh-create349/Contradiction-MCP'
 export const repositoryUrl = 'https://github.com/Daksh-create349/Contradiction-MCP'
 export const documentationUrl = `${repositoryUrl}/tree/main/docs`
 export const licenseUrl = 'https://opensource.org/licenses/MIT'

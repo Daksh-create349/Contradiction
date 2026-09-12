@@ -7,7 +7,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { Brand } from '@/components/brand'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { navigation, repositoryUrl } from '@/lib/site'
+import { glamaUrl, navigation, repositoryUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 export function SiteHeader() {
@@ -53,6 +53,16 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="flex items-center gap-5">
+            <a
+              href={glamaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-800 transition-opacity hover:opacity-80 dark:text-emerald-300 md:inline-flex"
+              aria-label="Glama 100/100 score (opens in a new tab)"
+            >
+              <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+              <span>Glama 100/100</span>
+            </a>
             <a href={repositoryUrl} target="_blank" rel="noopener noreferrer" className="hidden items-center gap-2 text-sm transition-opacity hover:opacity-60 sm:inline-flex" aria-label="View GitHub repository (opens in a new tab)">
               <Image src="/logos/github.svg" alt="" width={18} height={18} />
               GitHub
@@ -73,6 +83,7 @@ export function SiteHeader() {
               {navigation.map((item) => (
                 <a key={item.href} href={item.href} className="rounded-md py-3 text-base text-muted-foreground hover:text-foreground" onClick={() => setMenuOpen(false)}>{item.label}</a>
               ))}
+              <a href={glamaUrl} target="_blank" rel="noopener noreferrer" className="py-3 text-base font-medium text-emerald-600 dark:text-emerald-400" onClick={() => setMenuOpen(false)}>Glama Score (100/100)</a>
               <a href={repositoryUrl} target="_blank" rel="noopener noreferrer" className="py-3 text-base text-muted-foreground" onClick={() => setMenuOpen(false)}>View on GitHub</a>
               <a href="/#developers" className={cn(buttonVariants({ size: 'lg' }), 'h-11')} onClick={() => setMenuOpen(false)}>Get started <ArrowUpRight data-icon="inline-end" /></a>
             </div>

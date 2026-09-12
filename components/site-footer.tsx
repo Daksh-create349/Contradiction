@@ -5,7 +5,7 @@ import { Brand } from '@/components/brand'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { buttonVariants } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { documentationUrl, licenseUrl, repositoryUrl, securityUrl } from '@/lib/site'
+import { documentationUrl, glamaUrl, licenseUrl, repositoryUrl, securityUrl } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const questions = [
@@ -91,6 +91,11 @@ export function SiteFooter() {
               <a href="/#product" className="transition-colors hover:text-foreground">Product</a>
               <a href="/#developers" className="transition-colors hover:text-foreground">Installation</a>
               <a href={documentationUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">Documentation</a>
+                            <a href={glamaUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground">
+                <span className="size-1.5 rounded-full bg-emerald-500" />
+                Glama (100/100)
+                <ArrowUpRight className="size-3 text-muted-foreground" aria-hidden="true" />
+              </a>
               <a href={securityUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">Security</a>
               <Link href="/privacy" className="transition-colors hover:text-foreground">Privacy Policy</Link>
               <Link href="/terms" className="transition-colors hover:text-foreground">Terms & Conditions</Link>
