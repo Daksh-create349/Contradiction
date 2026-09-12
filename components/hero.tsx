@@ -19,6 +19,10 @@ export function Hero() {
         <div className="py-12 md:py-14 lg:py-10">
           <div className="grid items-center gap-12 lg:grid-cols-[1.04fr_1fr] lg:gap-7">
             <div className="hero-reveal flex flex-col items-start gap-7">
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1 text-xs font-medium text-amber-800 dark:text-amber-300">
+                <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true" />
+                <span>Currently in active development</span>
+              </div>
               <a href="#developers" className="group inline-flex items-center gap-2.5 text-sm text-muted-foreground">
                 <span className="size-1.5 rounded-full bg-accent-foreground" aria-hidden="true" />
                 <span>Open source. Clear by design.</span>

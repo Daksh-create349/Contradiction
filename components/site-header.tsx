@@ -28,11 +28,23 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30 bg-background/95 text-foreground backdrop-blur-xl">
+      <div className="border-b border-amber-500/20 bg-amber-500/10 px-4 py-1.5 text-center text-xs font-medium text-amber-800 dark:text-amber-300">
+        <span className="inline-flex items-center gap-2">
+          <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true" />
+          Currently in active development
+        </span>
+      </div>
       <div className="site-container">
         <div className="flex h-20 items-center justify-between">
-          <Link href="/" aria-label="Contradiction home" onClick={() => setMenuOpen(false)}>
-            <Brand />
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link href="/" aria-label="Contradiction home" onClick={() => setMenuOpen(false)}>
+              <Brand />
+            </Link>
+            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-800 dark:text-amber-300">
+              <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" aria-hidden="true" />
+              Currently in active development
+            </span>
+          </div>
           <nav aria-label="Main navigation" className="hidden items-center gap-7 lg:flex">
             {navigation.map((item) => (
               <a key={item.href} href={item.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
