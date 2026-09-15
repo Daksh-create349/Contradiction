@@ -122,10 +122,7 @@ export function ReleaseHistory() {
           {/* Header */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <span className="relative flex size-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex size-2.5 rounded-full bg-emerald-500" />
-              </span>
+              <span className="relative inline-flex size-2 rounded-full bg-blue-500" />
               <p className="eyebrow">Changelog &amp; Release History</p>
             </div>
             <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
@@ -151,22 +148,22 @@ export function ReleaseHistory() {
           </div>
 
           {/* Featured Latest Release Card with Animated Glow & Micro-interactions */}
-          <div className="relative group/latest overflow-hidden rounded-2xl border-2 border-emerald-500/30 bg-gradient-to-br from-emerald-500/5 via-background to-blue-500/5 p-6 shadow-sm backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-emerald-500/50 sm:p-8">
+          <div className="relative group/latest overflow-hidden rounded-2xl border-2 border-blue-500/30 bg-gradient-to-br from-blue-500/5 via-background to-indigo-500/5 p-6 shadow-sm backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-blue-500/50 sm:p-8">
             {/* Ambient subtle glow background */}
-            <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full bg-emerald-500/10 blur-3xl transition-opacity duration-500 group-hover/latest:opacity-100 opacity-60" />
+            <div className="pointer-events-none absolute -right-20 -top-20 size-60 rounded-full bg-blue-500/10 blur-3xl transition-opacity duration-500 group-hover/latest:opacity-100 opacity-60" />
 
             <div className="relative flex flex-col gap-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="font-mono text-2xl font-bold tracking-tight text-foreground transition-colors group-hover/latest:text-emerald-600 dark:group-hover/latest:text-emerald-400">
+                  <span className="font-mono text-2xl font-bold tracking-tight text-foreground transition-colors group-hover/latest:text-blue-600 dark:group-hover/latest:text-blue-400">
                     {latestRelease.version}
                   </span>
                   <Badge
                     variant="default"
-                    className="relative overflow-hidden bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs px-2.5 py-0.5 transition-all duration-200 shadow-xs"
+                    className="relative overflow-hidden bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs px-2.5 py-0.5 transition-all duration-200 shadow-xs"
                   >
                     <span className="inline-flex items-center gap-1.5">
-                      <Zap className="size-3 text-emerald-200 animate-pulse" aria-hidden="true" />
+                      <Zap className="size-3 text-blue-200" aria-hidden="true" />
                       Latest
                     </span>
                   </Badge>
@@ -189,9 +186,9 @@ export function ReleaseHistory() {
                 {latestRelease.badges.map((b) => (
                   <span
                     key={b}
-                    className="inline-flex items-center gap-1.5 rounded-full border bg-emerald-500/10 border-emerald-500/20 px-3 py-0.5 font-mono text-xs text-foreground/90 transition-all duration-200 hover:scale-105 hover:bg-emerald-500/15"
+                    className="inline-flex items-center gap-1.5 rounded-full border bg-blue-500/10 border-blue-500/20 px-3 py-0.5 font-mono text-xs text-foreground/90 transition-all duration-200 hover:scale-105 hover:bg-blue-500/15"
                   >
-                    <Sparkles className="size-3 text-emerald-500" aria-hidden="true" />
+                    <Sparkles className="size-3 text-blue-500" aria-hidden="true" />
                     {b}
                   </span>
                 ))}
@@ -201,7 +198,7 @@ export function ReleaseHistory() {
                 <ul className="grid gap-2.5 sm:grid-cols-2 text-sm leading-relaxed text-muted-foreground">
                   {latestRelease.highlights.map((h, i) => (
                     <li key={i} className="group/item flex items-start gap-2.5 transition-colors hover:text-foreground">
-                      <CheckCircle2 className="size-4 shrink-0 text-emerald-500 mt-1 transition-transform duration-200 group-hover/item:scale-125" aria-hidden="true" />
+                      <CheckCircle2 className="size-4 shrink-0 text-blue-500 mt-1 transition-transform duration-200 group-hover/item:scale-125" aria-hidden="true" />
                       <span>{h}</span>
                     </li>
                   ))}
@@ -217,7 +214,7 @@ export function ReleaseHistory() {
                   href={`${repositoryUrl}/releases/tag/${latestRelease.version}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/link inline-flex items-center gap-1 text-foreground/80 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                  className="group/link inline-flex items-center gap-1 text-foreground/80 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   GitHub Release Notes
                   <ArrowUpRight className="size-3 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" aria-hidden="true" />
@@ -268,7 +265,7 @@ export function ReleaseHistory() {
                   >
                     {/* Pulsing timeline node */}
                     <div
-                      className="absolute -left-[32px] sm:-left-[48px] top-4 size-3.5 rounded-full border-2 border-muted-foreground/40 bg-background transition-all duration-300 group-hover:border-emerald-500 group-hover:scale-125 group-hover:ring-4 group-hover:ring-emerald-500/20"
+                      className="absolute -left-[32px] sm:-left-[48px] top-4 size-3.5 rounded-full border-2 border-muted-foreground/40 bg-background transition-all duration-300 group-hover:border-blue-500 group-hover:scale-125 group-hover:ring-4 group-hover:ring-blue-500/20"
                       aria-hidden="true"
                     />
 
@@ -326,7 +323,7 @@ export function ReleaseHistory() {
                           <div className="border-t border-border/60 pt-3 space-y-2 text-xs leading-relaxed text-muted-foreground">
                             {rel.highlights.map((h, i) => (
                               <div key={i} className="flex items-start gap-2 group/bullet">
-                                <span className="size-1.5 rounded-full bg-emerald-500/80 mt-1.5 shrink-0 transition-transform duration-150 group-hover/bullet:scale-150" />
+                                <span className="size-1.5 rounded-full bg-blue-500/80 mt-1.5 shrink-0 transition-transform duration-150 group-hover/bullet:scale-150" />
                                 <span className="transition-colors group-hover/bullet:text-foreground">{h}</span>
                               </div>
                             ))}

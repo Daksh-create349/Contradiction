@@ -8,5 +8,7 @@ export const issuesUrl = `${repositoryUrl}/issues`
 export const navigation = [
   { label: 'Product', href: '/#product' },
   { label: 'How it works', href: '/#how-it-works' },
+  { label: 'Benchmarks', href: '/#benchmarks' },
   { label: 'Installation', href: '/#developers' },
+  { label: 'Releases', href: '/#releases' },
 ] as const
