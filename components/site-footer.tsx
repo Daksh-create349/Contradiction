@@ -23,7 +23,7 @@ const questions = [
   },
   {
     question: 'Which sources and clients can I connect?',
-    answer: 'Ingest GitHub repositories, local JSON, YAML, Markdown, CSV and PDF documents, and public web pages. Connect through stdio with clients such as Claude Desktop, Cursor, or Antigravity, or use authenticated streamable HTTP for a remote deployment.',
+    answer: 'Ingest GitHub repositories, local JSON, YAML, Markdown, CSV, and PDF documents, and public web pages. Connect through stdio with clients such as Claude Desktop, Cursor, or Antigravity, or use authenticated streamable HTTP for a remote deployment.',
   },
   {
     question: 'Can I use it in a commercial project?',
@@ -90,8 +90,9 @@ export function SiteFooter() {
             <nav aria-label="Footer navigation" className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <a href="/#product" className="transition-colors hover:text-foreground">Product</a>
               <a href="/#developers" className="transition-colors hover:text-foreground">Installation</a>
+              <a href="/#releases" className="transition-colors hover:text-foreground">Releases</a>
               <a href={documentationUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">Documentation</a>
-                            <a href={glamaUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground">
+              <a href={glamaUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground">
                 <span className="size-1.5 rounded-full bg-emerald-500" />
                 Glama (100/100)
                 <ArrowUpRight className="size-3 text-muted-foreground" aria-hidden="true" />

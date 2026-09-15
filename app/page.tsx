@@ -3,6 +3,7 @@ import { Hero } from '@/components/hero'
 import { ProductFeatures, Workflow } from '@/components/product-details'
 import { SourceDemo } from '@/components/source-demo'
 import { Quickstart } from '@/components/quickstart'
+import { ReleaseHistory } from '@/components/release-history'
 import { QuestionsAndClosing, SiteFooter } from '@/components/site-footer'
 
 export default function Page() {
@@ -18,6 +19,7 @@ export default function Page() {
         <SourceDemo />
         <Workflow />
         <Quickstart />
+        <ReleaseHistory />
         <QuestionsAndClosing />
       </main>
       <SiteFooter />
