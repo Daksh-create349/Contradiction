@@ -70,10 +70,10 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3.5 py-1 text-xs font-medium text-blue-800 transition-colors hover:bg-blue-500/20 dark:text-blue-300"
-                  aria-label="contradiction-mcp on NPM — 400+ downloads"
+                  aria-label="contradiction-mcp on NPM — 700+ downloads"
                 >
                   <span className="size-1.5 rounded-full bg-blue-500" aria-hidden="true" />
-                  <span>400+ downloads on <strong>NPM</strong></span>
+                  <span>700+ downloads on <strong>NPM</strong></span>
                   <ArrowUpRight className="size-3 text-blue-600 dark:text-blue-400" aria-hidden="true" />
                 </a>
                 <div className="pt-2">
