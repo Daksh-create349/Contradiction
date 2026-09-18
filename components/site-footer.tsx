@@ -5,7 +5,16 @@ import { Brand } from '@/components/brand'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { buttonVariants } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { documentationUrl, glamaUrl, licenseUrl, repositoryUrl, securityUrl } from '@/lib/site'
+import {
+  contributingUrl,
+  discussionsUrl,
+  documentationUrl,
+  glamaUrl,
+  goodFirstIssuesUrl,
+  licenseUrl,
+  repositoryUrl,
+  securityUrl,
+} from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const questions = [
@@ -79,9 +88,61 @@ export function QuestionsAndClosing() {
 
 export function SiteFooter() {
   return (
-    <footer className="pb-8">
+    <footer className="pb-12">
       <div className="site-container">
         <Separator />
+
+        {/* Wanna contribute section */}
+        <div className="border-b py-10">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-xl space-y-1.5">
+              <div className="flex items-center gap-2 text-xs font-mono tracking-wide uppercase text-muted-foreground">
+                <span className="inline-block size-1.5 rounded-full bg-emerald-500/80 animate-pulse" />
+                Open Source &amp; Community
+              </div>
+              <h3 className="text-lg font-medium tracking-tight text-foreground">
+                Wanna contribute?
+              </h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Contradiction MCP is community-driven. Build new connectors, expand heuristic detection, or solve open issues.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-5 text-sm">
+              <a
+                href={contributingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 font-medium text-foreground transition-colors hover:text-primary"
+              >
+                <span>Contributing Guide</span>
+                <ArrowUpRight className="size-3.5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" aria-hidden="true" />
+              </a>
+              <span className="text-muted-foreground/30">•</span>
+              <a
+                href={goodFirstIssuesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 font-medium text-foreground transition-colors hover:text-primary"
+              >
+                <span>Good First Issues</span>
+                <ArrowUpRight className="size-3.5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" aria-hidden="true" />
+              </a>
+              <span className="text-muted-foreground/30">•</span>
+              <a
+                href={discussionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <span>Discussions</span>
+                <ArrowUpRight className="size-3.5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer navigation */}
         <div className="py-8">
           <div className="flex flex-col justify-between gap-7 md:flex-row md:items-center">
             <Link href="/" aria-label="Back to Contradiction home">
@@ -92,6 +153,7 @@ export function SiteFooter() {
               <a href="/#developers" className="transition-colors hover:text-foreground">Installation</a>
               <a href="/#releases" className="transition-colors hover:text-foreground">Releases</a>
               <a href={documentationUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">Documentation</a>
+              <a href={contributingUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">Contribute</a>
               <a href={glamaUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground">
                 <span className="size-1.5 rounded-full bg-emerald-500" />
                 Glama (100/100)
