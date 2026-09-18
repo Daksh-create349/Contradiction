@@ -16,21 +16,34 @@ interface ReleaseItem {
 }
 
 const latestRelease: ReleaseItem = {
-  version: 'v0.3.2',
-  date: 'September 15, 2026',
-  title: 'Precision Parser Heuristics & CI Badge Intelligence',
+  version: 'v0.3.3',
+  date: 'September 18, 2026',
+  title: 'Legacy Routing Shim Hardening, Dimensional Unit Safety & Proxy IP',
   tagType: 'patch',
   isLatest: true,
-  badges: ['Latest', 'False-Positive Fixes', '191 Tests Passing'],
+  badges: ['Latest', 'Bug Fixes', '194 Tests Passing'],
   highlights: [
-    'IP Address vs SemVer Isolation: Strict IPv4/IPv6 guards prevent IP addresses (127.0.0.1) from misclassifying as versions or comparing against ports.',
-    'Namespace Leaf Guard: Prevents shared Markdown headings (## 2. Configuration) from falsely matching unrelated fields (host vs port).',
-    'Multi-Column Table Parsing: Skips delimiter rows and header rows, extracting tabular specs into clean property claims.',
-    'Visual CI Badge Detection: Ingests Shields.io and GitHub Action status badges to catch conflicting passing vs failing badges.',
+    'Legacy Tool Routing Shim: Resolved routing bug across review_contradiction, dismiss_contradiction, reopen_contradiction, get_contradiction_history, get_claim_history, and sync_sources.',
+    'Dimensional Unit Compatibility: Strict dimensional checks prevent false positive matches between incompatible units (e.g. bytes vs ms) or unitless numbers vs dimensional quantities.',
+    'Reverse Proxy IP Resolution: Added x-forwarded-for header support to prevent rate limiter IP collisions across remote deployments.',
+    'HTML Entity Sanitization: Decodes HTML entities (&gt;=, &amp;, &#39;) in web crawler tables and prose before claim extraction.',
   ],
 }
 
 const previousReleases: ReleaseItem[] = [
+  {
+    version: 'v0.3.2',
+    date: 'September 15, 2026',
+    title: 'Precision Parser Heuristics & CI Badge Intelligence',
+    tagType: 'patch',
+    badges: ['False-Positive Fixes', '191 Tests Passing'],
+    highlights: [
+      'IP Address vs SemVer Isolation: Strict IPv4/IPv6 guards prevent IP addresses (127.0.0.1) from misclassifying as versions or comparing against ports.',
+      'Namespace Leaf Guard: Prevents shared Markdown headings (## 2. Configuration) from falsely matching unrelated fields (host vs port).',
+      'Multi-Column Table Parsing: Skips delimiter rows and header rows, extracting tabular specs into clean property claims.',
+      'Visual CI Badge Detection: Ingests Shields.io and GitHub Action status badges to catch conflicting passing vs failing badges.',
+    ],
+  },
   {
     version: 'v0.3.1',
     date: 'September 15, 2026',
